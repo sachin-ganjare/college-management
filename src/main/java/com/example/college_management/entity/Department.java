@@ -25,7 +25,7 @@ public class Department {
         return name;
     }
 
-    public void setName() {
-        this.name = name;
+    public void setName(String name) {
+        this.name = this.name;
     }
 }
