@@ -3,6 +3,7 @@ package com.example.college_management.controller;
 import com.example.college_management.entity.Department;
 import com.example.college_management.service.DepartmentService;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/departments")
@@ -34,5 +35,9 @@ public class DepartmentController {
         return "Department deleted successfully!";
     }
 
+    @GetMapping
+    public List<Department> getAllDepartments() {
+        return departmentService.getAllDepartments();
+    }
 
 }
