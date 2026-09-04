@@ -3,6 +3,7 @@ package com.example.college_management.service;
 import com.example.college_management.entity.Course;
 import com.example.college_management.entity.Enrollment;
 import com.example.college_management.entity.Student;
+import com.example.college_management.exception.ResourceNotFoundException;
 import com.example.college_management.repository.CourseRepository;
 import com.example.college_management.repository.EnrollmentRepository;
 import com.example.college_management.repository.StudentRepository;
@@ -40,11 +41,13 @@ public class EnrollmentService {
             Long studentId,
             Long courseId) {
 
-        Student student = studentRepository.findById(studentId)
-                .orElseThrow(() -> new ResourceNotFoundException("Student not found"));
+        if (enrollmentRepository.existsByStudentIdAndCourseId(studentId, courseId)) {
+            throw new RuntimeException("Student is already enrolled in this course");
+        }
 
-        Course course = courseRepository.findById(courseId)
-                .orElseThrow(() -> new ResourceNotFoundException("Course not found"));
+        Student student = studentRepository.findById(studentId).orElseThrow(() -> new ResourceNotFoundException("Student not found: " + studentId));
+
+        Course course = courseRepository.findById(courseId).orElseThrow(() ->new ResourceNotFoundException"Course not found: " + courseId));
 
         Enrollment enrollment = new Enrollment();
 

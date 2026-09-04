@@ -1,6 +1,7 @@
 package com.example.college_management.service;
 
 import com.example.college_management.entity.Department;
+import com.example.college_management.exception.ResourceNotFoundException;
 import com.example.college_management.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
 
