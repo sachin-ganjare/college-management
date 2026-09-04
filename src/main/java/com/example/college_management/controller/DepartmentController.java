@@ -1,6 +1,7 @@
 package com.example.college_management.controller;
 
 import com.example.college_management.entity.Department;
+import com.example.college_management.exception.ResourceNotFoundException;
 import com.example.college_management.service.DepartmentService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -16,7 +17,7 @@ public class DepartmentController {
 
     @GetMapping("/{id}")
     public Department getDepartmentById(@PathVariable Long id) {
-        return departmentService.getDepartmentById(id).orElseThrow(()->new RuntimeException("Department Not Found!"));
+        return departmentService.getDepartmentById(id).orElseThrow(()->new ResourceNotFoundException("Department Not Found!"));
     }
 
     @PostMapping

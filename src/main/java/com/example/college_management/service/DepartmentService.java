@@ -29,7 +29,7 @@ public class DepartmentService {
 
     public Department updateDepartment(Long id, Department department) {
         Department existingDepartment = departmentRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Department Not Found!"));
+                .orElseThrow(()-> new ResourceNotFoundException("Department Not Found!"));
 
         existingDepartment.setName(department.getName());
         return departmentRepository.save(existingDepartment);

@@ -33,7 +33,7 @@ public class EnrollmentService {
 
     public Enrollment getEnrollmentById(Long id) {
         return enrollmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Enrollment not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Enrollment not found"));
     }
 
     public Enrollment createEnrollment(
@@ -41,10 +41,10 @@ public class EnrollmentService {
             Long courseId) {
 
         Student student = studentRepository.findById(studentId)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Student not found"));
 
         Course course = courseRepository.findById(courseId)
-                .orElseThrow(() -> new RuntimeException("Course not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found"));
 
         Enrollment enrollment = new Enrollment();
 
@@ -57,7 +57,7 @@ public class EnrollmentService {
     public void deleteEnrollment(Long id) {
 
         if (!enrollmentRepository.existsById(id)) {
-            throw new RuntimeException("Enrollment not found");
+            throw new ResourceNotFoundException("Enrollment not found");
         }
 
         enrollmentRepository.deleteById(id);

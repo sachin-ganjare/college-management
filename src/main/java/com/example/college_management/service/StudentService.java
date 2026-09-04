@@ -23,11 +23,11 @@ public class StudentService {
     }
 
     public Student getStudentById(Long id) {
-        return studentRepository.findById(id).orElseThrow(()->new RuntimeException("Student not found!"));
+        return studentRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Student not found!"));
     }
 
     public Student createStudent (String name, String email, String phone, Long departmentId){
-        Department department = departmentRepository.findById(departmentId).orElseThrow(()->new RuntimeException("Dept not found!"));
+        Department department = departmentRepository.findById(departmentId).orElseThrow(()->new ResourceNotFoundException("Dept not found!"));
         Student student = new Student();
         student.setName(name);
         student.setEmail(email);
@@ -38,7 +38,7 @@ public class StudentService {
 
     public Student updateStudent(Long id, String name, String email, String phone, Long departmentId) {
         Student student = getStudentById(id);
-        Department department = departmentRepository.findById(departmentId).orElseThrow(()-> new RuntimeException("Department not found"));
+        Department department = departmentRepository.findById(departmentId).orElseThrow(()-> new ResourceNotFoundException("Department not found"));
         student.setName(name);
         student.setEmail(email);
         student.setPhone(phone);
@@ -48,7 +48,7 @@ public class StudentService {
 
     public void deleteStudent(Long id) {
         if(!studentRepository.existsById(id)){
-            throw new RuntimeException("Student not found!");
+            throw new ResourceNotFoundException("Student not found!");
         }
         studentRepository.deleteById(id);
     }

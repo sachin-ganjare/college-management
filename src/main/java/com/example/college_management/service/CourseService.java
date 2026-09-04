@@ -2,6 +2,7 @@ package com.example.college_management.service;
 
 import com.example.college_management.entity.Course;
 import com.example.college_management.entity.Department;
+import com.example.college_management.exception.ResourceNotFoundException;
 import com.example.college_management.repository.CourseRepository;
 import com.example.college_management.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class CourseService {
 
     public Course getCourseById(Long id) {
         return courseRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Course not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found"));
     }
 
     public Course createCourse(
@@ -38,7 +39,7 @@ public class CourseService {
             Long departmentId) {
 
         Department department = departmentRepository.findById(departmentId)
-                .orElseThrow(() -> new RuntimeException("Department not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Department not found"));
 
         Course course = new Course();
 
@@ -60,7 +61,7 @@ public class CourseService {
         Course course = getCourseById(id);
 
         Department department = departmentRepository.findById(departmentId)
-                .orElseThrow(() -> new RuntimeException("Department not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Department not found"));
 
         course.setName(name);
         course.setCode(code);
@@ -73,7 +74,7 @@ public class CourseService {
     public void deleteCourse(Long id) {
 
         if (!courseRepository.existsById(id)) {
-            throw new RuntimeException("Course not found");
+            throw new ResourceNotFoundException("Course not found");
         }
 
         courseRepository.deleteById(id);
