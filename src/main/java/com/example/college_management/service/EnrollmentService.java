@@ -47,7 +47,7 @@ public class EnrollmentService {
 
         Student student = studentRepository.findById(studentId).orElseThrow(() -> new ResourceNotFoundException("Student not found: " + studentId));
 
-        Course course = courseRepository.findById(courseId).orElseThrow(() ->new ResourceNotFoundException"Course not found: " + courseId));
+        Course course = courseRepository.findById(courseId).orElseThrow(() ->new ResourceNotFoundException("Course not found: " + courseId));
 
         Enrollment enrollment = new Enrollment();
 
