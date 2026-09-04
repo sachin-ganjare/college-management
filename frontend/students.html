@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Students</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<h1>Students</h1>
+
+<a href="index.html">Home</a>
+
+<hr>
+
+<h2>Add Student</h2>
+
+<div class="form">
+
+    <input
+            type="text"
+            id="studentName"
+            placeholder="Student name"
+    >
+
+    <input
+            type="email"
+            id="studentEmail"
+            placeholder="Email"
+    >
+
+    <input
+            type="text"
+            id="studentPhone"
+            placeholder="Phone"
+    >
+
+    <select id="studentDepartment">
+        <option value="">Select Department</option>
+    </select>
+
+    <button onclick="createStudent()">
+        Add Student
+    </button>
+
+</div>
+
+<hr>
+
+<h2>Student List</h2>
+
+<table>
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Department</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody id="studentTableBody">
+    </tbody>
+
+</table>
+
+<script src="js/api.js"></script>
+<script src="js/students.js"></script>
+
+</body>
+</html>

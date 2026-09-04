@@ -19,4 +19,15 @@ public class GlobalExceptionHandler {
                 "message", exception.getMessage()
         );
     }
+
+    @ExceptionHandler(DuplicateEnrollmentException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public Map<String, Object> handleDuplicateEnrollment(DuplicateEnrollmentException exception) {
+        return Map.of(
+                "timestamp", LocalDateTime.now(),
+                "status", 409,
+                "error", "Conflict",
+                "message", exception.getMessage()
+        );
+    }
 }

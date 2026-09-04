@@ -1,7 +1,6 @@
 package com.example.college_management.controller;
 
 import com.example.college_management.entity.Teacher;
-import com.example.college_management.repository.TeacherRepository;
 import com.example.college_management.service.TeacherService;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +34,7 @@ public class TeacherController {
         return teacherService.updateTeacher(id, request.name(), request.email(), request.departmentId());
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public String deleteTeacher(@PathVariable Long id) {
         teacherService.deleteTeacher(id);
         return "Teacher deleted successfully!";

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Enrollments</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<h1>Enrollments</h1>
+
+<a href="index.html">Home</a>
+
+<hr>
+
+<h2>Enroll Student</h2>
+
+<div class="form">
+
+    <select id="studentSelect">
+        <option value="">Select Student</option>
+    </select>
+
+    <select id="courseSelect">
+        <option value="">Select Course</option>
+    </select>
+
+    <button onclick="createEnrollment()">
+        Enroll
+    </button>
+
+</div>
+
+<hr>
+
+<h2>Enrollment List</h2>
+
+<table>
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Student</th>
+        <th>Course</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody id="enrollmentTableBody">
+    </tbody>
+
+</table>
+
+<script src="js/api.js"></script>
+<script src="js/enrollments.js"></script>
+
+</body>
+
+</html>

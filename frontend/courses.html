@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Courses</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<h1>Courses</h1>
+
+<a href="index.html">Home</a>
+
+<hr>
+
+<h2>Add Course</h2>
+
+<div class="form">
+
+    <input
+            type="text"
+            id="courseName"
+            placeholder="Course name"
+    >
+
+    <input
+            type="text"
+            id="courseCode"
+            placeholder="Course code"
+    >
+
+    <input
+            type="number"
+            id="courseCredits"
+            placeholder="Credits"
+    >
+
+    <select id="courseDepartment">
+        <option value="">Select Department</option>
+    </select>
+
+    <button onclick="createCourse()">
+        Add Course
+    </button>
+
+</div>
+
+<hr>
+
+<h2>Course List</h2>
+
+<table>
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Credits</th>
+        <th>Department</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody id="courseTableBody">
+    </tbody>
+
+</table>
+
+<script src="js/api.js"></script>
+<script src="js/courses.js"></script>
+
+</body>
+
+</html>

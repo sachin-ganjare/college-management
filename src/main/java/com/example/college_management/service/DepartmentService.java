@@ -37,6 +37,9 @@ public class DepartmentService {
     }
 
     public void deleteDepartment(Long id) {
+        if (!departmentRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Department Not Found!");
+        }
         departmentRepository.deleteById(id);
     }
 }

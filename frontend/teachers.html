@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Teachers</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<h1>Teachers</h1>
+
+<a href="index.html">Home</a>
+
+<hr>
+
+<h2>Add Teacher</h2>
+
+<div class="form">
+
+    <input
+            type="text"
+            id="teacherName"
+            placeholder="Teacher name"
+    >
+
+    <input
+            type="email"
+            id="teacherEmail"
+            placeholder="Email"
+    >
+
+    <select id="teacherDepartment">
+        <option value="">Select Department</option>
+    </select>
+
+    <button onclick="createTeacher()">
+        Add Teacher
+    </button>
+
+</div>
+
+<hr>
+
+<h2>Teacher List</h2>
+
+<table>
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody id="teacherTableBody">
+    </tbody>
+
+</table>
+
+<script src="js/api.js"></script>
+<script src="js/teachers.js"></script>
+
+</body>
+
+</html>

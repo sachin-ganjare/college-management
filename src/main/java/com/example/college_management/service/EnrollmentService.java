@@ -3,6 +3,7 @@ package com.example.college_management.service;
 import com.example.college_management.entity.Course;
 import com.example.college_management.entity.Enrollment;
 import com.example.college_management.entity.Student;
+import com.example.college_management.exception.DuplicateEnrollmentException;
 import com.example.college_management.exception.ResourceNotFoundException;
 import com.example.college_management.repository.CourseRepository;
 import com.example.college_management.repository.EnrollmentRepository;
@@ -37,17 +38,17 @@ public class EnrollmentService {
                 .orElseThrow(() -> new ResourceNotFoundException("Enrollment not found"));
     }
 
-    public Enrollment createEnrollment(
-            Long studentId,
-            Long courseId) {
+    public Enrollment createEnrollment(Long studentId, Long courseId) {
 
         if (enrollmentRepository.existsByStudentIdAndCourseId(studentId, courseId)) {
-            throw new RuntimeException("Student is already enrolled in this course");
+            throw new DuplicateEnrollmentException("Student is already enrolled in this course");
         }
 
-        Student student = studentRepository.findById(studentId).orElseThrow(() -> new ResourceNotFoundException("Student not found: " + studentId));
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Student not found: " + studentId));
 
-        Course course = courseRepository.findById(courseId).orElseThrow(() ->new ResourceNotFoundException("Course not found: " + courseId));
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found: " + courseId));
 
         Enrollment enrollment = new Enrollment();
 
